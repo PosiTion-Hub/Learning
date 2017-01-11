@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ECMAScript 6  初探</title>
+</head>
+<body>
+	<script src="src/js/require.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		
+		require.config({
+		    paths : {
+		        "compents" : '/after/compents'  
+		    }
+		})
+		
+		
+	</script>
+	
+	
+	<script>
+		class Animal {
+			
+			constructor(){
+				this.type = 'animal',
+				this.say = function(){return '11222'}
+			}
+			say(say){
+				console.log(this.say() + ':' + say);
+				console.log(this.say)
+			}
+		}
+		
+		let anima = new Animal();
+		console.log(
+					anima.say('go go go@!@!!')
+			
+		)
+		
+		
+		
+		
+	</script>
+	<script src="src/js/after/ECMAScript_Test.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="src/js/before/ECMAScript_Test.js" type="text/javascript" charset="utf-8"></script>-->
+	
+	
+	
+	
+</body>
+</html>

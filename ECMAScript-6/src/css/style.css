@@ -1,0 +1,14 @@
+
+body{
+	
+	color:#f00;
+	font-size:20px;
+	
+}
+
+.images{
+	width: 400px;
+	height: 400px;
+	background: url("/webpack/src/images/IMG_0092.JPG") no-repeat center;
+	background-size: 150px 150px;	
+}

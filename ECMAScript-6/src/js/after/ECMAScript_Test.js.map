@@ -1,0 +1,1 @@
+{"version":3,"sources":["ECMAScript_Test.js"],"names":["console","log"],"mappings":";;AAAA;;;;;;AAGAA,QAAQC,GAAR,CAAa,SAAb","file":"ECMAScript_Test.js","sourcesContent":["import compts from 'compents';\r\n\r\n\r\nconsole.log( '这个是main')"]}
