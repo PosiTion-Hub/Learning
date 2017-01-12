@@ -1,58 +1,58 @@
 ECMAScript 6
 
-//±Ê¼Ç
+//ç¬”è®°
 
 
-							ECMAScript 6  Ì½Ë÷
+							ECMAScript 6  æŽ¢ç´¢
 
-Ò»¡¢ let,constÃüÁî
-     1¡¢let: ÓÃÓÚÉùÃ÷±äÁ¿µÄ£¬ÀàËÆ var £¬ÆäÖÐ let ÊÇÔÚ´úÂë¿éÄÚÓÐÐ§£¬ÔÚforÑ­»·ÖÐÓÈÎªÍ»³ö
-          Àý£º{
-                   let a = 10;
-                    var b = 11; 
-               }
-               console.log(a); //±¨´í
-               console.log(b); //11
+ä¸€ã€ let,constå‘½ä»¤
+     1ã€let: ç”¨äºŽå£°æ˜Žå˜é‡çš„ï¼Œç±»ä¼¼ var ï¼Œå…¶ä¸­ let æ˜¯åœ¨ä»£ç å—å†…æœ‰æ•ˆï¼Œåœ¨forå¾ªçŽ¯ä¸­å°¤ä¸ºçªå‡º
+          ä¾‹ï¼š{
+               let a = 10;
+                var b = 11; 
+           }
+           console.log(a); //æŠ¥é”™
+           console.log(b); //11
 
-           let ²»´æÔÚ±äÁ¿ÌáÉý
-              console.log(foo);// Êä³öundefined
-               var foo = 2;
+       let ä¸å­˜åœ¨å˜é‡æå‡
+          console.log(foo);// è¾“å‡ºundefined
+           var foo = 2;
 
-               console.log(bar); // ±¨´íReferenceError
-               let bar = 2;
-               
-             ÔÝÊ±ÐÔËÀÇø (ÕâÒ²¾ÍÒâÎ¶×Å let±äÁ¿´æÔÚ±äÁ¿ÌáÉýµÃ½á¹¹Ê± Ò²ÊÇ²»ÄÜÊÇÓÃtypeof ½øÐÐÅÐ¶Ï£¬µ«ÊÇÕâ¸ö±äÁ¿Ã»ÓÐ¶¨ÒåÊ± typeof ½«²»»á±¨´í µÄµ½undefined)
-               var tmp = 12;
-               if(true){
-                    tmp = 'abc';// ±¨´íReferenceError
-                    let tmp;
-               }
-     2¡¢const £ºÉùÃ÷Ò»¸öÖ»¶ÁµÃ³£Á¿£¬ÉùÃ÷ºó²»¿É¸Ä±ä ÕâÒ²¾ÍÒâÎ¶×Å const ³£Á¿ÊÇ²»ÄÜÏÈ¶¨Òåºó¸³ÖµµÄ  ÉùÃ÷Ê±¾Í±ØÐè¸³Öµ
+           console.log(bar); // æŠ¥é”™ReferenceError
+           let bar = 2;
+           
+         æš‚æ—¶æ€§æ­»åŒº (è¿™ä¹Ÿå°±æ„å‘³ç€ letå˜é‡å­˜åœ¨å˜é‡æå‡å¾—ç»“æž„æ—¶ ä¹Ÿæ˜¯ä¸èƒ½æ˜¯ç”¨typeof è¿›è¡Œåˆ¤æ–­ï¼Œä½†æ˜¯è¿™ä¸ªå˜é‡æ²¡æœ‰å®šä¹‰æ—¶ typeof å°†ä¸ä¼šæŠ¥é”™ çš„åˆ°undefined)
+           var tmp = 12;
+           if(true){
+                tmp = 'abc';// æŠ¥é”™ReferenceError
+                let tmp;
+           }
+     2ã€const ï¼šå£°æ˜Žä¸€ä¸ªåªè¯»å¾—å¸¸é‡ï¼Œå£°æ˜ŽåŽä¸å¯æ”¹å˜ è¿™ä¹Ÿå°±æ„å‘³ç€ const å¸¸é‡æ˜¯ä¸èƒ½å…ˆå®šä¹‰åŽèµ‹å€¼çš„  å£°æ˜Žæ—¶å°±å¿…éœ€èµ‹å€¼
           const foo = {}
                foo.prop = 123;
           console.log(foo.prop) //123
-          foo = {} //±¨´í
+          foo = {} //æŠ¥é”™
           
-          Object.freeze·½·¨¿ÉÒÔ¶³½áÒ»¸ö¶ÔÏó Ê¹µÃ¶ÔÏóÌí¼ÓÊôÐÔÎÞÐ§
+          Object.freezeæ–¹æ³•å¯ä»¥å†»ç»“ä¸€ä¸ªå¯¹è±¡ ä½¿å¾—å¯¹è±¡æ·»åŠ å±žæ€§æ— æ•ˆ
           
 
-¶þ¡¢±äÁ¿µÃ½â¹¹
+äºŒã€å˜é‡å¾—è§£æž„
      var a = 1;var b = 2; var c = 3 ;  <===> var a = 1, b = 2, c = 3; <===> ES6 : var [ a, b, c ] = [1, 2, 3]
      let [foo, [[bar],baz]] = [11,[[22],33]]  console.log(foo,bar, baz) //1,2,3
      let [x, y, z] = ['1'];
-     Èç¹û½â¹¹²»³É¹¦ ÄÇÃ´±äÁ¿ÖµÎª undefined
+     å¦‚æžœè§£æž„ä¸æˆåŠŸ é‚£ä¹ˆå˜é‡å€¼ä¸º undefined
    
-     ½â¹¹Ö¸¶¨Ä¬ÈÏÖµ
+     è§£æž„æŒ‡å®šé»˜è®¤å€¼
           var [foo = true] = [];
           console.log(foo) //true
 
-     ¶ÔÏó½â¹¹
+     å¯¹è±¡è§£æž„
           var {obj1, obj2} = {obj1: 1, obj2: 2}
           console.log(obj1, obj2)
-     ×Ö·û´®½â¹¹
+     å­—ç¬¦ä¸²è§£æž„
           let {chat1, chat2, chat2} = 'hello'
           console.log(chat1, chat2 , chat3)// h e l 
-     º¯Êý²ÎÊý»ú¹¹
+     å‡½æ•°å‚æ•°æœºæž„
           function add([a, b]){
               return a + b 
           }
@@ -63,47 +63,47 @@ ECMAScript 6
           }
           move()  //1
           move({x:2, y:3})// 5
-     /*ÓÃÍ¾*/
+     /*ç”¨é€”*/
           [x,y] = [y,x];
           var [a, b, c, d] = ()=>[1, 2, 3, 4];
           var {x, y} = ()=>{x:1,y:2}
      
-¶þ¡¢×Ö·û´®µÃÀ©Õ¹
-     1¡¢×Ö·ûµÃUnicode±íÊ¾·¨
+äºŒã€å­—ç¬¦ä¸²å¾—æ‰©å±•
+     1ã€å­—ç¬¦å¾—Unicodeè¡¨ç¤ºæ³•
           "\u0061" //a
-          "\u0000" - "\uFFFF" Ö®¼ä±íÊ¾Îªµ¥×Ö·û £¬³¬³ö±ØÐëÓÃÁ½¸ö×Ö·û±íÊ¾
+          "\u0000" - "\uFFFF" ä¹‹é—´è¡¨ç¤ºä¸ºå•å­—ç¬¦ ï¼Œè¶…å‡ºå¿…é¡»ç”¨ä¸¤ä¸ªå­—ç¬¦è¡¨ç¤º
           let hello = 123;
           hell\u{6f} // 123;
-     2¡¢ codePointAt();  //·µ»Ø±àÂë ÀàËÆ charCodeAt
-     3¡¢String.fromCodePoint(); // ÓÃÓÚ´ÓÂëµã·µ»Ø¶ÔÓ¦×Ö·û String.fromCharCode
-     4¡¢×Ö·û´®±éÀúÆ÷½Ó¿Ú   
+     2ã€ codePointAt();  //è¿”å›žç¼–ç  ç±»ä¼¼ charCodeAt
+     3ã€String.fromCodePoint(); // ç”¨äºŽä»Žç ç‚¹è¿”å›žå¯¹åº”å­—ç¬¦ String.fromCharCode
+     4ã€å­—ç¬¦ä¸²éåŽ†å™¨æŽ¥å£   
      for(let code of 'abcd'){
           console.log(code)     
      }
-     5¡¢Í¨¹ý×Ö·û´®µÄÏÂ±ê¶ÔÓ¦µÄ×Ö·û
+     5ã€é€šè¿‡å­—ç¬¦ä¸²çš„ä¸‹æ ‡å¯¹åº”çš„å­—ç¬¦
      'abcd'.at(1); // b 
-     6¡¢normalize()
-     7¡¢includes()   ·µ»Ø²¼¶ûÖµ ±íÊ¾ÊÇ·ñÕÒµ½ÁË²ÎÊý×Ö·û´®
-          startsWith() ·µ»Ø²¼¶ûÖµ ±íÊ¾²ÎÊýÊÇ·ñÔÚÔ´×Ö·ûµÄ¿ª²¿¡£
-          endsWith() ·µ»Ø²¼¶ûÖµ ±íÊ¾²ÎÊý×Ö·û´®ÊÇ·ñÔÚÔ´×Ö·ûµÃÎ²²¿
+     6ã€normalize()
+     7ã€includes()   è¿”å›žå¸ƒå°”å€¼ è¡¨ç¤ºæ˜¯å¦æ‰¾åˆ°äº†å‚æ•°å­—ç¬¦ä¸²
+          startsWith() è¿”å›žå¸ƒå°”å€¼ è¡¨ç¤ºå‚æ•°æ˜¯å¦åœ¨æºå­—ç¬¦çš„å¼€éƒ¨ã€‚
+          endsWith() è¿”å›žå¸ƒå°”å€¼ è¡¨ç¤ºå‚æ•°å­—ç¬¦ä¸²æ˜¯å¦åœ¨æºå­—ç¬¦å¾—å°¾éƒ¨
                let str = 'hello word';
                str.includes('o') //true
                str.startsWith('h') //true
                str.endsWith('d') //true
               
-               str.startsWith('h',6) //true       ºóÃæµÃÊý×Ö±íÊ¾´ÓÊ²Ã´µØ·½¿ªÊ¼
-               str.endsWith('hello',5) //true   ºóÃæµÃÊý×Ö±íÊ¾´ÓÊ²Ã´µØ·½¿ªÊ¼
-         8¡¢repeat()  ·µ»ØÒ»¸öÐÂµÃ×Ö·û´®£¬²ÎÊýÎªÊý×Ö(ÎªÐ¡Êý»áÈ¡Õû)±íÊ¾×Ö·ûÖØ¸´¶àÉÙ´Î
+               str.startsWith('h',6) //true       åŽé¢å¾—æ•°å­—è¡¨ç¤ºä»Žä»€ä¹ˆåœ°æ–¹å¼€å§‹
+               str.endsWith('hello',5) //true   åŽé¢å¾—æ•°å­—è¡¨ç¤ºä»Žä»€ä¹ˆåœ°æ–¹å¼€å§‹
+         8ã€repeat()  è¿”å›žä¸€ä¸ªæ–°å¾—å­—ç¬¦ä¸²ï¼Œå‚æ•°ä¸ºæ•°å­—(ä¸ºå°æ•°ä¼šå–æ•´)è¡¨ç¤ºå­—ç¬¦é‡å¤å¤šå°‘æ¬¡
                'xx'.repeat(4); //xxxx
                'nono'.repeat(0); // '' 
 
-          9¡¢padStart(nub,str)£¬padEnd(nub,str) //×Ö·û´®²¹È«³¤¶È¹¦ÄÜ    Èç¹ûnubµÃ³¤¶ÈÐ¡ÓÚ×Ö·û´®µÃ³¤µÄÄÇÃ´·µ»ØÔ­×Ö·û´®
-                'x'.padStart(3,'a')// 'aax' //ÔÚ×Ö·û´®µÄÍ·²¿Ìí¼Ó×Ö·ûÊ¹µÄ×Ö·û³¤¶ÈÎª3 ¼´¿É
-               'x'.padEnd(3,'a')// 'xaa' //ÔÚ×Ö·û´®µÄÎ²²¿Ìí¼Ó×Ö·ûÊ¹µÄ×Ö·û³¤¶ÈÎª3 ¼´¿É
-               'abc'.padStart(10,'123456789')// '1234567abc' ÕâÖÖ¸öÇé¿öÒ²Òª×¢Òâ //µ±²ÎÊý×Ö·û¼ÓÔ­×Ö·ûµÄ³¤¶È ´óÓÚÁË nub »á½ØÈ¡²ÎÊý×Ö·û
+          9ã€padStart(nub,str)ï¼ŒpadEnd(nub,str) //å­—ç¬¦ä¸²è¡¥å…¨é•¿åº¦åŠŸèƒ½    å¦‚æžœnubå¾—é•¿åº¦å°äºŽå­—ç¬¦ä¸²å¾—é•¿çš„é‚£ä¹ˆè¿”å›žåŽŸå­—ç¬¦ä¸²
+                'x'.padStart(3,'a')// 'aax' //åœ¨å­—ç¬¦ä¸²çš„å¤´éƒ¨æ·»åŠ å­—ç¬¦ä½¿çš„å­—ç¬¦é•¿åº¦ä¸º3 å³å¯
+               'x'.padEnd(3,'a')// 'xaa' //åœ¨å­—ç¬¦ä¸²çš„å°¾éƒ¨æ·»åŠ å­—ç¬¦ä½¿çš„å­—ç¬¦é•¿åº¦ä¸º3 å³å¯
+               'abc'.padStart(10,'123456789')// '1234567abc' è¿™ç§ä¸ªæƒ…å†µä¹Ÿè¦æ³¨æ„ //å½“å‚æ•°å­—ç¬¦åŠ åŽŸå­—ç¬¦çš„é•¿åº¦ å¤§äºŽäº† nub ä¼šæˆªå–å‚æ•°å­—ç¬¦
           
-          10¡¢×Ö·û´®Ä£°å
-               ` abc ${name} defg ` //×Ö·û´®Ä£°å¡£ ÆäÖÐ±äÁ¿Ê¹ÓÃ ${}°ü¹üÆðÀ´ Ê¡ÇøÁËÆ´½ÓµÄÂé·³ ÆäÖÐ ${}ÖÐ²»½ö¿ÉÒÔ·Å±äÁ¿»¹¿ÉÒÔ·Å·½·¨ºÍ×Ö·û´®
+          10ã€å­—ç¬¦ä¸²æ¨¡æ¿
+               ` abc ${name} defg ` //å­—ç¬¦ä¸²æ¨¡æ¿ã€‚ å…¶ä¸­å˜é‡ä½¿ç”¨ ${}åŒ…è£¹èµ·æ¥ çœåŒºäº†æ‹¼æŽ¥çš„éº»çƒ¦ å…¶ä¸­ ${}ä¸­ä¸ä»…å¯ä»¥æ”¾å˜é‡è¿˜å¯ä»¥æ”¾æ–¹æ³•å’Œå­—ç¬¦ä¸²
 
 
 

@@ -1,51 +1,291 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>ECMAScript 6  初探</title>
-</head>
-<body>
-	<script src="src/js/require.js" type="text/javascript" charset="utf-8"></script>
-	<script>
-		
-		require.config({
-		    paths : {
-		        "compents" : '/after/compents'  
-		    }
-		})
-		
-		
-	</script>
-	
-	
-	<script>
-		class Animal {
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>测试webpack</title>
+	</head>
+	<body>
+		<div class="images">
+		</div>
+		<script type="text/javascript" src="src/js/bundle.js" ></script>
+		<script>
 			
-			constructor(){
-				this.type = 'animal',
-				this.say = function(){return '11222'}
-			}
-			say(say){
-				console.log(this.say() + ':' + say);
-				console.log(this.say)
-			}
-		}
-		
-		let anima = new Animal();
-		console.log(
-					anima.say('go go go@!@!!')
+			window.log = window.console;
 			
-		)
-		
-		
-		
-		
-	</script>
-	<script src="src/js/after/ECMAScript_Test.js" type="text/javascript" charset="utf-8"></script>
-	<!--<script src="src/js/before/ECMAScript_Test.js" type="text/javascript" charset="utf-8"></script>-->
-	
-	
-	
-	
-</body>
+			
+			log.info('------- let const 测试----------');
+			{
+				let a = 1;
+				var b = 2;
+			}
+			
+			try{
+				log.log(a);
+				log.log(b);
+			}catch(e){
+				log.log(b);
+				log.error(e + '    =>a 为块级作用域 ，块级作用域外打印报错' );
+			}
+			
+			
+			
+			log.info('------- 循环的块级作用域 ---------');
+			let a = [];
+			for(let i = 0; i < 5; i++){
+				a[i] = function(){
+					return i;
+				}
+			}
+			try{
+				log.log(i);
+			}catch(e){
+				log.error(e + '    =>a 为块级作用域 ，块级作用域外打印报错' );
+				
+			}
+			
+			log.log(a[0]());
+			log.log(a[1]());
+			log.log(a[2]());
+			log.log(a[3]());
+			log.log(a[4]());
+			log.info('------- let 暂时行死区 ---------');
+			
+			var tmp = 123;
+			if(true){
+				try{
+					tmp = 'abc';
+					let tmp;
+				}catch(e){
+					log.error(e + "=> tmp 进入了暂时性死区")
+				}
+				
+			}
+			log.info('------- let 不存在变量提升 ---------');
+			
+			log.log(foo);
+			var foo = 1234;
+			try{
+				log.log(bar)
+				let bar = 1;
+				}catch(e){
+					log.error(e + "=> let 不存在变量得提升")
+				}
+			log.info('------- let 不允许在同一个块级作用域重复定义 ---------');
+			
+			
+			// 不允许在同一个作用域内做变量得重复定义
+//			function aa(){
+//				try{
+//					var a = 1;
+//					let a = 2;
+//					log.log(a);
+//				}catch(e){
+//					log.error(e + "=> let 不存在变量得提升")
+//				}
+//				
+//			}
+//			function bb(){
+//				try{
+//					let a = 1;
+//					let a = 2;
+//					log.log(a);
+//				}catch(e){
+//					log.error(e + "=> let 不存在变量得提升")
+//				}
+//			}
+			
+			log.info('------- do 表达式 ---------');
+			//浏览器暂时不识别
+//			let x = do {
+//				let t = 2;
+//				t*t+1;
+//			}
+			//log.log(x);
+			
+			
+			
+			log.info('------- const 常量 ：一但声明不可改变---------');
+			
+			
+			
+			log.info('------- ES6 解构 ---------');
+			var [aa, bb, cc] = [1, 2, 3];
+			log.log(aa,bb,cc);
+			
+			{
+				//数组解构
+				let [foo, [[bar],baz]] = [11,[[22],33]];
+				log.log(foo, bar, baz); //1 2 3
+				
+				let [, , third] = [111, 222, 333]; //11 22 33
+				log.log(third); //333
+				
+				let [head, ...tail] = [1111, 2222, 3333];
+				log.log(`head : ${head}, tail : ${tail}`); //head : 1111, tail : 2222,3333
+				
+				let [x, y, z] = ['1'];
+				log.log(x, y, z); //1 undefined undefined
+				
+				let [aa] = []; //undefined
+				
+				//set 解构 也可以解构
+				
+				let [xx, yy, zz] = new Set(["a", "b", "c"]);
+				log.log(xx, yy, zz) //a,b,c
+				
+				//结构默认值
+				
+				let [deft = 'aaa'] = [];
+				log.log(deft) //aaa
+				
+				
+				
+				// 这里 uu 能够解构成功所以 f函数不会执行
+				function f() {
+					log.log('111');
+					return 111;
+				}
+				let [uu = f()] = [222]
+				log.log(uu) //222
+				
+				
+				
+				
+				//对象解构 （查找同名属性 然后赋值）
+				
+				var {obj1, obj2} = {obj1:'1', obj2: '2'}
+				log.log(obj1, obj2); // 1 2
+				
+				var {obj3, obj4} = {obj3:'1', obj4: '2'}
+				log.log(obj3, obj4); //
+				
+				try{
+					var {obj3, obj4} = {obj3:'1', obj4: '2'}
+					log.log(obj3, obj5); //
+				}catch(e){
+					log.error(e + "=> 当解构的那个属性不存在得时候报错");
+				}
+				
+				let {aaa, sin, cos} = Math;
+				log.log(log, sin, cos)
+				//字符串得结构
+				const [chat1,chat2,chat3] = 'hello';
+				log.log(chat1, chat2, chat3); //h e l
+				
+				let {length: len} = 'hello';
+				log.log(len) // 5
+				
+				//解构 数据类型的方法
+				
+				let {toString: s} = 123;
+				log.log(s === Number.prototype.toString); //true
+				
+				//函数参数的解构
+				function add([a, b]){
+					return a + b;
+				}
+				add([1, 3]);
+				log.log(add([1, 3])); //4
+				
+				let arr = [[1, 2], [3, 4]].map(([a, b]) => a+b);
+				console.log(arr); // [3, 7]
+				
+				
+				
+				function move({x = 0, y = 1} = {}){
+					return x + y;
+					
+				}
+				log.log(move())//1
+				log.log(move({x:1,y:2})) //3
+				
+				
+				let mapArr = [1, undefined, 3].map((x = 'yes') => x + ':' + 1);
+				log.log(mapArr);
+				
+				
+				
+			}
+			
+			
+			
+			
+			log.info('------------------------------字符串得扩展--------------------------------');
+			
+			log.log('\u0061');
+			log.log('\u{41}');
+			
+			'\z' === 'z'  // true
+			'\172' === 'z' // true
+			'\x7A' === 'z' // true
+			'\u007A' === 'z' // true
+			'\u{7A}' === 'z' // true
+			
+			var s = "𠮷";
+			s.length // 2
+			s.charAt(0) // ''
+			s.charAt(1) // ''
+			s.charCodeAt(0) // 55362
+			s.charCodeAt(1) // 57271
+			
+			
+			var s = "𠮷a";
+			s.codePointAt(0) // 134071
+			s.codePointAt(1) // 57271
+			s.codePointAt(2) // 97
+						
+			
+			for (let codePoint of 'hello') {
+			  log.log(codePoint);
+			}
+			
+			"abc".charAt(0);
+			
+			
+			log.info('--------------for of-----------'); //数组也可以用
+			for(let charcode of 'asdf'){
+				log.log(charcode)
+			}
+			
+						
+			//alert`1` // 与alert(1)类似
+			
+			//tag标签  //tag 方法返回的是一个字符串得数组，后面的是模板变量的值
+			var a1 = 5;
+			var b = 10;
+			//tag`Hello ${ a1 + b } world ${ a1 * b }`;
+			// 等同于
+			//tag(['Hello ', ' world ', ''], 15, 50);
+			
+			
+			
+			log.info('------------------------------字符串得扩展--------------------------------');
+			
+			//构造函数正则
+			new RegExp(/abc/ig, 'i').flags // i
+			//es6 允许第二个参数为正则的修饰符  会覆盖前面参数的修饰符
+			
+			//字符串正则
+			log.log(/^\uD83D/.test('\uD83D\uDC2A'));// true  
+			
+			var s = '𠮷'; 
+			///^.$/.test(s) // false
+			///^.$/u.test(s) // true  //加u可以匹配码点大于0xffff的Unicode字符
+			
+			
+			function withinErrorMargin (left, right) {
+			  return Math.abs(left - right) < Number.EPSILON;
+			}
+			
+			log.log(withinErrorMargin(0.1 + 0.2, 0.3));
+			// true
+			log.log(withinErrorMargin(0.2 + 0.2, 0.3));
+			
+			// false
+						
+			
+			
+			
+		</script>
+	</body>
 </html>
