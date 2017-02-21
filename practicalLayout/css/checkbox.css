@@ -1,0 +1,228 @@
+*,*:before,*:after{
+	box-sizing: border-box;
+	font-family: "微软雅黑";
+	-webkit-tap-highlight-color:transparent;
+}
+body{
+	width:100%;
+	max-width: 750px;
+	min-width: 320px;
+	margin: 0 auto;
+	padding:.2rem;
+}
+p{
+	font-size: .5rem;
+	margin: .1rem auto;
+}
+.opt{
+	position: relative;
+	line-height: .5rem;
+	font-size: .4rem;
+	margin: .2rem 0;
+}
+.magic-checkbox{
+	position: absolute;
+	display: none;
+	left: 0;
+	
+}
+.magic-checkbox+ label{
+	display: block;
+	padding-left: .62rem;
+	position: relative;
+	cursor: pointer;
+	moz-user-select: -moz-none;
+	-moz-user-select: none;
+	-o-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+
+.magic-checkbox+ label:before{
+	content: '';
+	width:.5rem;
+	height: .5rem;
+	position: absolute;
+	left: 0;
+	top:0;
+	border-radius: 5px;
+	border:1px solid #3e97eb;
+	
+}
+.magic-checkbox:checked+ label:before{
+    border: #3e97eb;
+	background: #3e97eb;
+}
+.magic-checkbox+ label:after{
+	top: .03rem;
+    left:.156rem ;
+    box-sizing: border-box;
+    width: .18rem;
+    height: .3rem;
+    transform: rotate(45deg) scale(0);
+    border-width: 3px;
+    border-style: solid;
+    border-color: #fff;
+    border-top: 0;
+    border-left: 0;
+    position: absolute;
+    transition: all .3s;
+    content: '';
+}
+
+.magic-checkbox:checked+ label:after{
+    transform: rotate(45deg) scale(1);
+    
+}
+
+@keyframes hover-color {
+	from {
+		border-color: #c0c0c0;
+	}
+	to {
+		border-color: #3e97eb;
+	}
+}
+
+/*      美化后的raudio        */
+
+.magic-radio{
+	position: absolute;
+	display: none;
+	left: 0;
+	
+}
+.magic-radio+ label{
+	display: block;
+	padding-left: .62rem;
+	position: relative;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+/*.magic-radio+ label:hover:before{
+	
+	animation-duration: 0.3s;
+	animation-fill-mode: both;
+	animation-name: hover-color;
+	
+}*/
+.magic-radio+ label:before{
+	content: '';
+	width:.5rem;
+	height: .5rem;
+	position: absolute;
+	left: 0;
+	top:0;
+	border-radius:50%;
+	border:1px solid #eaeaea;
+	
+}
+.magic-radio:checked+ label:before{
+	    border-color: #3e97eb;
+		/*background: #3e97eb;*/
+}
+.magic-radio+ label:after{
+	width: .2rem;
+	height: .2rem;
+    position: absolute;
+    top:.15rem;
+    left:.15rem;
+    transform: scale(0);
+    transition: all .3s;
+    border-radius: 50%;
+	background: #3e97eb;
+    margin: auto;
+    transition: all .3s;
+    content: '';
+}
+
+.magic-radio:checked+ label:after{
+    transform: scale(1);
+    
+}
+
+/*            switch                */
+
+
+
+.switch{
+	margin: 5px 0;
+    cursor: pointer;
+}
+.switch, .switch-text{
+	width: 1.8rem;
+	height:.6rem;
+	top:0;
+	position: relative;
+	border-radius:.3rem;
+	display: block;
+	
+	/*border:1px solid #068506;*/
+}
+.switch-text{
+	background:#3e97eb ;
+}
+.switch input{
+	display: none;
+	position: absolute;
+	
+}
+.switch-text:after,.switch-text:before{
+	position: absolute;
+	height:.6rem;
+	width:.55rem;
+	font-family: "微软雅黑";
+	font-size: .28rem;
+	color:#fff;
+	line-height: .6rem;
+	text-align: center;
+	transition: all .3s;
+}
+.switch-text:after{
+	content: attr(data-yes);
+	right: .1rem;
+}
+.switch-text:before{
+	content: attr(data-no);
+	left: .1rem;
+	opacity: 0;
+}
+.switch-btn{
+	position: absolute;
+	top:.01rem;
+	left: .015rem;
+	width: .58rem;
+	background: linear-gradient(#eee, #fafafa);
+    border-radius: 100%;
+    height: .58rem;
+    text-align: center;
+    line-height: .58rem;
+    transition: all .3s;z-index: 111;
+}
+.switch-btn:before{
+	    color: #aaaaaa;
+	    content: "|||";
+	    font-size: .2rem;
+	}
+.switch .checkbox:checked ~ .switch-text{
+	background-color: #ed5b49;
+	
+}
+.switch .checkbox:checked ~ .switch-text:before{
+	
+	opacity: 1;
+}
+.switch .checkbox:checked ~ .switch-text:after{
+	
+	opacity: 0;
+}
+.switch .checkbox:checked ~ .switch-btn{
+	left: 1.21rem;
+	color:#FF0000;
+	
+}
+
+
