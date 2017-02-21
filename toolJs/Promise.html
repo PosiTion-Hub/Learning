@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ES6 Promise</title>
+	</head>
+	<body>
+		
+		
+		
+		<script type="text/javascript">
+			
+			
+			
+			function isNumLtfive(n) {
+				return new Promise((resolve, reject)=>{
+					setTimeout(()=>{
+						var num =Math.floor(Math.random()*10+1);
+						if(num >=n){
+							resolve(num);
+						}else{
+							reject(num);
+						}
+					},1000);
+				});
+			}
+			
+			isNumLtfive(5).then(data => {
+				console.log(data)
+			},data => {
+				console.warn(data)
+			});
+			
+			
+			
+			
+			
+			
+		</script>		
+	</body>
+</html>
