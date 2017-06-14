@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.list{
+				padding: 15px 0;
+				border-bottom: 1px solid #eaeaea;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="content">
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+			<div class="list">1111111111111111111</div>
+		</div>
+		<script src="zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			
+				var statu = false;
+				document.addEventListener("scroll", load, false);
+				
+				function load(e) {
+		 			var scroll_top = document.body.scrollTop || document.documentElement.scrollTop;
+		 			var client_height = window.innerHeight;
+		 			var scroll_height = document.body.scrollHeight;
+		 			var last = scroll_height - (scroll_top + client_height);
+		 			
+		 			if (last < 100 && !statu) {
+		 					
+//		 				if(statu) {
+//		 					return false;
+//		 				}else{
+		 					console.log('adsfasdfasdfasdfasdfa:' + statu);
+		 					statu = true;
+		 					getData();
+//		 				}
+		 			}
+	 			}
+				
+				
+				
+				function getData(){
+					setTimeout(function(){
+						var str = '';
+						for(var i=0; i<10;i++){
+							str+= '<div class="list">'+i+'</div>';
+						}
+						statu = false;
+						$('.content').append(str)
+					},500)
+					
+				}
+				
+				
+				
+			
+		
+		</script>
+		
+	</body>
+</html>
